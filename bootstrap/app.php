@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->trimStrings(
-            ['*']
+            ['/*']
         );
         $middleware->alias([
             'snap.authentication' => \App\Http\Middleware\SnapAuthentication::class,
