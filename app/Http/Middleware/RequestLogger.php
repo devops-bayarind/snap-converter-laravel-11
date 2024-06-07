@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\CommonHelper;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,11 @@ class RequestLogger
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        CommonHelper::Log("REQUEST URL: ".$request->url());
+        CommonHelper::Log("REQUEST HEADER: ".json_encode($request->header()));
+        CommonHelper::Log("REQUEST BODY: ".$request->getContent());
+        $response = $next($request);
+        CommonHelper::Log("RESPONSE BODY: ".$response->getContent());
+        return $response;
     }
 }
