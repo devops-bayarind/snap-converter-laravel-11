@@ -19,6 +19,7 @@ Route::controller(\App\Http\Controllers\NonSnapToSnapController::class)
 //Convert Snap -> Non Snap
 $currentVersion = env("APP_VERSION", "v1.0");
 Route::middleware(['request.logger', 'snap.authentication'])
+    ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\TrimStrings::class])
     ->prefix("$currentVersion/transfer-va")
     ->group(function () {
         Route::post('/payment', [\App\Http\Controllers\SnapToNonSnapController::class, 'payment']);
