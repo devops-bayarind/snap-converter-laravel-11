@@ -13,9 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->trimStrings(
-            ['api/*']
-        );
+        $middleware->trimStrings(except: [
+            '/api/*',
+        ]);
         $middleware->alias([
             'snap.authentication' => \App\Http\Middleware\SnapAuthentication::class,
             'request.logger' => \App\Http\Middleware\RequestLogger::class,
