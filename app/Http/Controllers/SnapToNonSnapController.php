@@ -173,6 +173,7 @@ class SnapToNonSnapController extends Controller
                 "responseMessage" => "Missing mandatory field partnerServiceId",
             ], 200, ['X-TIMESTAMP' => date('c')]);
         }
+        CommonHelper::Log("Length partnerServiceId".strlen($request["partnerServiceId"]));
         if (strlen($request["partnerServiceId"]) != 8) {
             return response()->json([
                 "responseCode" => "400" . $apiServiceCode . "01",
