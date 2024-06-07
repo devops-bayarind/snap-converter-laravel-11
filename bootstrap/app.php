@@ -16,6 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trimStrings(except: [
             '/api/*',
         ]);
+        $middleware->remove([
+            \Illuminate\Foundation\Http\Middleware\TrimStrings::class
+        ]);
         $middleware->alias([
             'snap.authentication' => \App\Http\Middleware\SnapAuthentication::class,
             'request.logger' => \App\Http\Middleware\RequestLogger::class,
