@@ -174,6 +174,7 @@ class SnapToNonSnapController extends Controller
             ], 200, ['X-TIMESTAMP' => date('c')]);
         }
         CommonHelper::Log("Length partnerServiceId".strlen($request["partnerServiceId"]));
+        CommonHelper::Log("PartnerServiceId:".$request["partnerServiceId"]);
         if (strlen($request["partnerServiceId"]) != 8) {
             return response()->json([
                 "responseCode" => "400" . $apiServiceCode . "01",
